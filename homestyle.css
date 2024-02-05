@@ -1,0 +1,44 @@
+@font-face {
+    font-family: arcade;
+    src: url(fonts/ARCADE.TTF);
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    background: url('images/homebg.gif') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+  body {
+    background-color: black;
+    font-size: 30pt;
+    font-family: 'arcade';
+  }
+
+
+  .start-btn {
+    text-align: center;
+    display: inline-block;
+    margin: 5px;
+    font-weight: bold;
+    padding: 10px 0 10px 10px;
+    background-color: #FF63D8;
+    text-shadow: -1px -1px black, 1px 1px white;
+    color: #8488F4;
+    border-radius: 7px;
+    box-shadow: 0 .2em #585EFF;
+    cursor: pointer;
+    letter-spacing: 5px;
+    margin-bottom: 100px;
+    margin-right: 1px;
+  }
+  
+  .video-game-button:active, .start-btn:active {
+    box-shadow: none;
+    position: relative;
+    top: .2em;
+  }

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syntax Saga</title>
+    <link rel="icon" href="images/icon.png" type="image/png">
+    <link rel="stylesheet" href="game.css">
+    <script src="word-list.js" defer></script>
+    <script src="game.js" defer></script>
+</head>
+<body>
+    <div class="game-modal">
+        <div class="content">
+            <img src="#" alt="gif">
+            <h4>Game Over!</h4>
+            <p>The correct word was: <b>rainbow</b></p>
+            <button class="play-again">Next</button>
+        </div>
+    </div>
+    <div class="insufficient-points-modal">
+        <div class="content">
+            <h4>Insufficient Points!</h4>
+            <p>You don't have enough points for this action.</p>
+        </div>
+    </div>
+    <div class="hint-modal">
+        <div class="content">
+          <h4>Select Hint Type:</h4>
+          <div class="hint-buttons">
+            <button onclick="chooseHint('consonant')">Consonant</button>
+            <button onclick="chooseHint('vowel')">Vowel</button>
+          </div>
+          <button onclick="closeHintModal()">Cancel</button>
+        </div>
+      </div>
+    <div class="container">
+        <!-- Points and Guess Text Boxes -->
+        <div class="points-guess-box">
+            <div class="points-box">
+                Points: <input type="text" id="score" readonly="true" size="10" value="0">
+            </div>
+            <div class="guess-box">
+                Guess (3): <input type="text" id="fails" readonly="true" size="10" value="0">
+            </div>
+        </div>
+        <!-- Hangman Box -->
+        <div class="hangman-box">
+            <img src="" draggable="false">
+        </div>
+        <!-- Game Box -->
+        <div class="game-box">
+            <ul class="word-display"></ul>
+            <h4 class="hint-text"><b></b></h4>
+		<br></br>
+            <h4 class="guesses-text"><b></b></h4>
+            <br></br>
+            <button id="hintButton" onclick="getHint()">Get Hint (Costs 25 points)</button>
+            <button id="resetButton" onclick="getRandomWord()">Restart</button>
+            <button id="exitButton" onclick="redirectToHome()">Exit</button>
+            <div class="keyboard"></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,352 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Space Mono", sans-serif;
+}
+
+body {
+  display: flex;
+  padding: 0 10px;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-image: url('images/gamebg.gif');
+  background-size: cover;
+}
+
+.container {
+  display: flex;
+  flex-direction: column; /* Adjusted to column layout */
+  align-items: center;
+  gap: 20px; /* Increased gap */
+  padding: 40px;
+  background: #191919; /* Darker container background */
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(4, 1, 212, 0.473); /* Neon-green shadow */
+  text-align: center;
+}
+
+.points-guess-box {
+  display: flex;
+  gap: 20px;
+  justify-content: center; /* Centered points and guess boxes */
+  width: 100%; /* Full width */
+}
+
+.points-box,
+.guess-box {
+  text-align: center;
+  color: #fff;
+}
+
+.points-box input,
+.guess-box input {
+  background-color: #3B3486; /* Darker background color */
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  padding: 8px;
+  width: 70px;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.game-box .word-display {
+  margin-top: 50px;
+  gap: 10px;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.word-display .letter {
+  margin-top: 50px;
+  width: 28px;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  border-bottom: 3px solid #fff;
+  max-width: 200px;
+  color: #fff;
+}
+
+.word-display .letter.guessed {
+  margin: -40px 0 35px;
+  border-color: transparent;
+}
+
+
+.game-box h4 {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 15px;
+  max-width: 800px;
+}
+
+.game-box h4 b {
+  color: #fff;
+  
+}
+
+.game-box .guesses-text b {
+  color: #D24545;
+}
+
+.game-box .keyboard {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  justify-content: center;
+}
+
+:where(.game-modal, .keyboard) button {
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 4px;
+  text-transform: uppercase;
+  background: #3B3486;
+}
+
+.keyboard button {
+  padding: 7px;
+  width: calc(100% / 9 - 5px);
+}
+
+.keyboard button[disabled] {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+:where(.game-modal, .keyboard) button:hover {
+  background: #1d0052;
+}
+
+.game-modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 0 10px;
+  transition: opacity 0.4s ease;
+}
+
+.game-modal.show {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.4s 0.4s ease;
+}
+
+.game-modal .content {
+  padding: 30px;
+  max-width: 420px;
+  width: 100%;
+  border-radius: 10px;
+  background: #191919;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.game-modal img {
+  max-width: 130px;
+  margin-bottom: 20px;
+}
+
+.game-modal img[src="images/victory.gif"] {
+  margin-left: -10px;
+}
+
+.game-modal h4 {
+  font-size: 1.53rem;
+  color: white;
+}
+
+.game-modal p {
+  font-size: 1.15rem;
+  margin: 15px 0 30px;
+  font-weight: 500;
+  color: white;
+}
+
+.game-modal p b {
+  color: #5E63BA;
+  font-weight: 600;
+}
+
+.game-modal button {
+  padding: 12px 23px;
+  margin-top: 15px; /* Added margin-top */
+  background-color: #5E63BA;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.game-modal button:hover {
+  background-color: #1d0052;
+}
+
+#hintButton{
+  display: block;
+  margin: 0 auto; /* Center horizontally */
+  margin-top: 15px; /* Added margin-top */
+  padding: 12px 20px;
+  background-color: #3B3486;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+#resetButton {
+  display: inline-block;
+  margin: 0 auto; /* Center horizontally */
+  margin-top: 15px; /* Added margin-top */
+  padding: 12px 20px;
+  background-color: #3B3486;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+#exitButton {
+  display: inline-block;
+  margin: 0 auto; /* Center horizontally */
+  margin-top: 15px; /* Added margin-top */
+  padding: 12px 20px;
+  background-color: #A10035;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+#exitButton:hover {
+  background-color: #57001d;
+}
+
+#hintButton:hover, #resetButton:hover {
+  background-color: #1d0052;
+}
+  
+.game-started .container {
+	width: 50vw;
+	}
+
+  .hint-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 0 10px;
+    transition: opacity 0.4s ease;
+  }
+  
+  .hint-modal.show {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.4s 0.4s ease;
+  }
+  
+  .hint-modal .content {
+    display: flex;
+    flex-direction: column; /* Align buttons vertically */
+    align-items: center;
+    padding: 30px;
+    max-width: 420px;
+    width: 100%;
+    border-radius: 10px;
+    background: #191919;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .hint-modal h4 {
+    font-size: 1.53rem;
+    color: white;
+  }
+  
+  .hint-modal button {
+    margin-top: 15px;
+    padding: 12px 23px;
+    margin-top: 15px;
+    background-color: #5E63BA;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .hint-modal button:hover {
+    background-color: #1d0052;
+  }
+
+  .hint-modal button:last-child {
+    margin-top: 10px; /* Adjust spacing between Cancel and Consonant/Vowel buttons */
+  }
+
+  .insufficient-points-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #191919;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(252, 0, 0, 0.692);
+    text-align: center;
+    padding: 20px;
+    z-index: 9999;
+    display: none;
+  
+}
+
+.insufficient-points-modal.show {
+    display: block;
+}
+
+.insufficient-points-modal .content {
+    color: white;
+}
